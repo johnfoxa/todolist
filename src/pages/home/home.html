@@ -1,0 +1,31 @@
+<ion-header>
+		<ion-navbar>
+			<ion-title text-center>
+				To-Do List <ion-icon name="alarm"></ion-icon>
+			</ion-title>
+		</ion-navbar>
+</ion-header>
+
+<ion-content>
+	<div [formGroup] = "AddList">
+		<ion-item>
+			<ion-input text-center [(ngModel)] = "todo" placeholder = "Enter New Task Here" type  = "text" formControlName = "control" [required] = "true"></ion-input>
+		</ion-item>
+	</div>
+	<button ion-button full (click) = "add()" >
+		<p>Add</p>
+	</button>
+
+	<ion-list *ngFor = "let itemsList of todos">
+		<ion-item>
+			{{itemsList}}
+			<button ion-button color = "secondary" (click) = "edit(itemsList)" name = "edit"  item-right>
+			<p>edit</p>
+			</button>
+			<button ion-button color = "primary" (click) = "delete(itemsList)"  item-right>
+			<ion-icon name="trash"></ion-icon>
+			</button>
+			
+		</ion-item>
+	</ion-list>
+</ion-content>
